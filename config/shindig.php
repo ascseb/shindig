@@ -12,7 +12,20 @@ return array(
 		'news' => 'News',
 		'articles' => 'Articles',
 	),
+	'post' => array(
+		'status' => array(
+			'draft' => 'Draft',
+			'publish' => 'Publish',
+		),
+		'type' => array(
+			'post' => 'Post',
+			'page' => 'Page',
+		),
+	),
 	'sidebars' => array(
 		'default' => 'Default',
+	),
+	'time' => array(
+		'format' => 'd m Y',
 	),
 );

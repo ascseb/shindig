@@ -13,3 +13,10 @@ Route::set('shindig/post', 'shindig((/<action>(/<id>)))')
 		'action'     => 'list',
 	));
 	
+Route::set('shindig/tinymce', 'media/js/tinymce')
+	->defaults(array(
+		'directory' => 'shindig',
+		'controller' => 'media',
+		'action'	=> 'tinymce', 		
+	));	
+	
