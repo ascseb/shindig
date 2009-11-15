@@ -6,10 +6,10 @@ Route::set('shindig/blog', 'blog(/<slug>)')
 		'action'     => 'posts',
 	));
 
-Route::set('shindig/admin', 'shindig(/<controller>(/<action>(/<id>)))')
+Route::set('shindig/post', 'shindig((/<action>(/<id>)))')
 	->defaults(array(
 		'directory'  => 'shindig',
-		'controller' => 'admin',
-		'action'     => 'dashboard',
+		'controller' => 'post',
+		'action'     => 'list',
 	));
 	
