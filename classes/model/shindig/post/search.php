@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-Class Model_Post_Search extends Sprig
+Class Model_Shindig_Post_Search extends Sprig
 {
 	
 }

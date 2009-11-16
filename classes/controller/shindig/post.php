@@ -17,7 +17,10 @@ class Controller_Shindig_Post extends Controller
 	 */
 	public function action_create()
 	{
-		$this->request->response = 'Create post';
+		$this->request->response = View::factory('shindig/post/edit')
+			->bind('post', $post);
+			
+		$post = Sprig::factory('shindig_post');
 	}
 	
 	/**
