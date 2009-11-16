@@ -9,17 +9,17 @@ class Model_Shindig_Tag extends Sprig
 	{
 		$this->_fields += array(
 			'id' => new Sprig_Field_Auto(array(
-				'column'=>'id',
 				'primary'=>TRUE,
 			)),
 			'tag' => new Sprig_Field_Char(array(
-				'label' => 'Tag',
+				'label' => __('Tag'),
 			)),
 			'slug' => new Sprig_Field_Char(array(
-				'label' => 'Slug',
+				'label' => __('Slug'),
 				'edit' => FALSE,
 			)),
 			'posts' => new Sprig_Field_ManyToMany(array(
+				'label' => __('Posts'),
 				'model' => 'Shindig_Post',
 			)),
 		);

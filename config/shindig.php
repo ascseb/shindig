@@ -2,6 +2,7 @@
 
 return array(
 	'use_authors' => FALSE, 
+	'use_authentication' => TRUE,
 	'blog' => array(
 		'title' => 'My Shindig',
 		'tagline' => 'Just another Shindig blog',
@@ -26,6 +27,6 @@ return array(
 		'default' => 'Default',
 	),
 	'time' => array(
-		'format' => 'd m Y',
+		'format' => 'm/d/y',
 	),
 );
