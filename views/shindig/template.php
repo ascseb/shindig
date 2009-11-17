@@ -22,7 +22,9 @@
 <?php foreach ($menu as $link => $title): ?>
 <li><?php echo HTML::anchor($link, $title) ?></li>
 <?php endforeach ?>
-<li class="logout"><?php echo HTML::anchor(Request::instance()->route->uri(array('action' => 'logout')), 'Logout') ?></li>
+<?php foreach ($menu_b as $link => $title): ?>
+<li class="logout"><?php echo HTML::anchor($link, $title) ?></li>
+<?php endforeach ?>
 </ul>
 </div></div>
 <?php endif ?>

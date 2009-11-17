@@ -3,11 +3,6 @@
 return array(
 	'use_authors' => FALSE, 
 	'use_authentication' => TRUE,
-	'blog' => array(
-		'title' => 'My Shindig',
-		'tagline' => 'Just another Shindig blog',
-		'number_posts' => 10,
-	),
 	'categories' => array(
 		'uncategoriezed' => 'Uncategorized',
 		'news' => 'News',
@@ -28,5 +23,9 @@ return array(
 	),
 	'time' => array(
 		'format' => 'm/d/y',
+	),
+	'post_create_redirect' => array(
+			'route' => 'shindig/admin',
+			'action' => 'update',
 	),
 );

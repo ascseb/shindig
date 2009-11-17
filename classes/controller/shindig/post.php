@@ -36,19 +36,13 @@ class Controller_Shindig_Post extends Controller
 	{
 		$this->request->response = View::factory('shindig/admin/edit_post')
 			->set('form_title', __('Create New Post'))
-			->set('time_field', 'created_on')
 			->bind('errors', $errors)
 			->bind('post', $post);
 			
 		$post = Sprig::factory('shindig_post');
 				
 		if( isset($_POST['shindig_post']) )
-		{
-			
-			echo Kohana::debug($_POST);
-			
-			$post->values($_POST);
-			
+		{						
 			try 
 			{
 				/*
@@ -62,7 +56,12 @@ class Controller_Shindig_Post extends Controller
 				}
 				*/
 				
-				$post->create();
+				$post->values($_POST)->create();
+				
+				Request::instance()->redirect(Route::get(Kohana::config('shindig.post_create_redirect.route'))->uri(array(
+					'action' => Kohana::config('shindig.post_create_redirect.action'),
+					'id' => $post->id,
+				)));
 				
 			}
 			catch( Validate_Exception $e )
@@ -78,7 +77,14 @@ class Controller_Shindig_Post extends Controller
 	 */
 	public function action_update()
 	{
-		$this->request->response = 'Update post';
+		$this->request->response = View::factory('shindig/admin/edit_post')
+			->set('form_title', __('Update Post'))
+			->bind('errors', $errors)
+			->bind('post', $post);
+			
+		$post = Sprig::factory('shindig_post')
+					->values(array('id'=>$this->request->param('id')))
+					->load();
 	}
 	
 }

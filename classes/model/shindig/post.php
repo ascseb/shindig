@@ -18,6 +18,7 @@ class Model_Shindig_Post extends Sprig
 			'slug' => new Sprig_Field_Char(array(
 				'label' => __('Slug'),
 				'empty' => FALSE,
+				'unique' => TRUE,
 			)),
 			'status' => new Sprig_Field_Char(array(
 				'label' => __('Post Status'),

@@ -1,14 +1,30 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Blog extends Controller 
+class Controller_Blog extends Controller_Shindig_Public  
 {
+	
+	public function before()
+	{
+		if( $this->request->param('slug') )
+		{
+			$this->request->action = 'post';
+		}
+		parent::before();
+	}
+	
 	public function action_posts()
 	{
-		
+		$this->template->content = Request::factory(
+			Route::get('shindig/blog')->uri()
+		)->execute()->response;
 	}
 	
 	public function action_post()
 	{
-		
+		$this->template->content = Request::factory(
+			Route::get('shindig/blog')->uri(array(
+				'slug' => $this->request->param('slug'),
+			))
+		)->execute()->response;
 	}
 }

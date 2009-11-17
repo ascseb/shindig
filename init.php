@@ -1,7 +1,8 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-Route::set('shindig/blog', 'blog(/<slug>)')
+Route::set('shindig/blog', 'shindig/blog(/<slug>)')
 	->defaults(array(
+		'directory'  => 'shindig',
 		'controller' => 'blog',
 		'action'     => 'posts',
 	));
@@ -16,7 +17,7 @@ Route::set('shindig/admin/posts', 'shindig/admin/posts((/<id>)/<action>)', array
 Route::set('shindig/admin', 'shindig/admin((/<id>)/<action>)', array('id' => '\d+'))	
 	->defaults(array(
 		'directory'  => 'shindig',
-		'controller' => 'shindig',
+		'controller' => 'admin',
 		'action'     => 'list',
 	));
 	
