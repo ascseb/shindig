@@ -23,6 +23,7 @@ class Controller_Blog extends Controller_Shindig_Public
 	{
 		$this->template->content = Request::factory(
 			Route::get('shindig/blog')->uri(array(
+				'action' => 'post',
 				'slug' => $this->request->param('slug'),
 			))
 		)->execute()->response;
