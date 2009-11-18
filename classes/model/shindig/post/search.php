@@ -8,7 +8,7 @@ class Model_Shindig_Post_Search extends Sprig
 	{
 		if ( ! $query)
 		{
-			$query = DB::select();
+			$query = DB::select()->order_by('id', 'DESC')->order_by('created_on', 'DESC');
 		}
 		if( ! $limit )
 		{

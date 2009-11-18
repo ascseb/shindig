@@ -5,6 +5,19 @@ class Model_Shindig_Post extends Sprig
 	protected $_title_key = 'slug';
 	protected $_table = 'posts';
 	
+	public function __get($field)
+	{
+		if ($field === 'post_excerpt')
+		{
+			if( ! parent::__get('post_excerpt') )
+			{
+				return Text::limit_words( parent::__get('post_content'), 50, ' ...');
+			}
+		}
+
+		return parent::__get($field);
+	}	
+	
 	protected function _init()
 	{
 		$this->_fields += array(
@@ -66,5 +79,5 @@ class Model_Shindig_Post extends Sprig
 			
 		);
 	}
-	
+		
 }

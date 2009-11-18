@@ -3,7 +3,7 @@
 <div id="shindig-post">
 	<h2 id="shindig-post-title"><?php echo $post->title ?></h2>
 	<div id="shindig-post-content">
-		<?php echo $post->post_content ?>
+		<?php echo ( $use_excerpt ) ? $post->post_excerpt : $post->post_content ?>
 	</div>
 </div>
 <?php endforeach; ?>

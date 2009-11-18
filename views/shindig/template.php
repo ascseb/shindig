@@ -4,7 +4,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo Kohana::$charset ?>"/>
 
-<title><?php echo $title ? __($title).' | ' : '' ?><?php echo Kohana::config('shindig.blog.title')?></title>
+<title><?php echo $title ? __($title).' | ' : '' ?><?php echo Kohana::config('blog.title')?></title>
 
 <?php foreach ($styles as $file => $type) echo HTML::style($file, array('media' => $type)), "\n" ?>
 <?php foreach ($scripts as $file) echo HTML::script($file), "\n" ?>
@@ -12,9 +12,12 @@
 </head>
 <body>
 
-<div id="header"><div class="container">
-<?php echo HTML::anchor('', Kohana::config('shindig.blog.title'), array('id' => 'logo')) ?>
-</div></div>
+<div id="header">
+<div class="container">
+<?php echo HTML::anchor('', Kohana::config('blog.title'), array('id' => 'logo')) ?><br/>
+<span class="small"><?php echo Kohana::config('blog.tagline') ?></span>
+</div>
+</div>
 
 <?php if ( ! empty($menu)): ?>
 <div id="menu"><div class="container">

@@ -5,6 +5,7 @@ class Controller_Shindig_Blog extends Controller
 	public function action_posts()
 	{
 		$this->request->response = View::factory('shindig/posts')
+			->set('use_excerpt', Kohana::config('blog.use_excerpt'))
 			->bind('pagination', $pagination)
 			->bind('posts', $posts);
 			
