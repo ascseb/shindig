@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 return array(
-	'use_authors' => FALSE, 
+	'use_authors' => TRUE, 
 	'use_authentication' => TRUE,
 	'categories' => array(
 		'uncategoriezed' => 'Uncategorized',
@@ -22,7 +22,7 @@ return array(
 		'default' => 'Default',
 	),
 	'time' => array(
-		'format' => 'm/d/y',
+		'format' => 'M d, Y',
 	),
 	'post_create_redirect' => array(
 			'route' => 'shindig/admin',

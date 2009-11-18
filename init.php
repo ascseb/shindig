@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-Route::set('shindig/blog', 'shindig/blog(/<slug>)')
+Route::set('shindig/blog', 'shindig/blog(/<action>(/<slug>))')
 	->defaults(array(
 		'directory'  => 'shindig',
 		'controller' => 'blog',
@@ -27,4 +27,10 @@ Route::set('shindig/media', 'shindig/media(/<file>)', array('file'=>'.*?'))
 		'controller' => 'media',
 		'action'	=> 'get', 		
 	));	
+
+Route::set('public/blog', 'blog(/<slug>)')
+	->defaults(array(
+		'controller' => 'blog',
+		'action'     => 'posts',
+	));
 	

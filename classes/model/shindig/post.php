@@ -14,6 +14,10 @@ class Model_Shindig_Post extends Sprig
 				return Text::limit_words( parent::__get('post_content'), 50, ' ...');
 			}
 		}
+		if($field === 'link')
+		{
+			return Route::get('public/blog')->uri(array('slug'=>$this->slug));
+		}
 
 		return parent::__get($field);
 	}	
@@ -32,6 +36,9 @@ class Model_Shindig_Post extends Sprig
 				'label' => __('Slug'),
 				'empty' => FALSE,
 				'unique' => TRUE,
+				'rules' => array(
+					'regex' => array('/^[a-zA-Z_-]+$/D'),  
+				),
 			)),
 			'status' => new Sprig_Field_Char(array(
 				'label' => __('Post Status'),

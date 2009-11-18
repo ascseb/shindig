@@ -5,4 +5,18 @@ class Shindig
 	public static $has_auth = FALSE;
 	public static $authors = array();
 	public static $author = '';
+	
+	
+	public static function load_authors()
+	{
+		$authors = Sprig::factory('user')->load(NULL, FALSE);
+		
+		foreach( $authors as $i=>$a)
+		{
+			self::$authors[$a->id] = $a->username;
+		}
+		
+	}
+	
+	
 }

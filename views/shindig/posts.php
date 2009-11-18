@@ -1,7 +1,7 @@
 
 <?php foreach($posts as $i=>$post) : ?>
 <div id="shindig-post">
-	<h2 id="shindig-post-title"><?php echo $post->title ?></h2>
+	<h2 id="shindig-post-title"><?php echo html::anchor($post->link, $post->title) ?></h2>
 	<div id="shindig-post-content">
 		<?php echo ( $use_excerpt ) ? $post->post_excerpt : $post->post_content ?>
 	</div>
