@@ -22,6 +22,25 @@ class Model_Shindig_Post extends Sprig
 		return parent::__get($field);
 	}	
 	
+	public function load_page_menu()
+	{
+		$query = DB::select()->order_by('id', 'DESC')
+			->order_by('created_on', 'DESC')
+			->where('type','=','page')
+			->and_where('status','=','publish');
+			
+		$pages = $this->load($query, FALSE);
+		
+		$menu = array();
+		
+		foreach($pages as $i=>$page)
+		{
+			$menu[URL::site('page/'.$page->slug, TRUE)] = $page->title;
+		}
+		
+		return $menu;
+	}
+	
 	protected function _init()
 	{
 		$this->_fields += array(

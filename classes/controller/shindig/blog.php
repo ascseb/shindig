@@ -61,6 +61,6 @@ class Controller_Shindig_Blog extends Controller
 		$this->request->response = View::factory('shindig/menu')
 				->bind('menu', $menu);
 				
-		$menu = Sprig::factory('shindig_post_search')->load_page_menu();		
+		$menu = Sprig::factory('shindig_post')->load_page_menu();		
 	}
 }

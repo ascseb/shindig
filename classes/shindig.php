@@ -20,7 +20,7 @@ class Shindig
 	
 	public static function page_menu()
 	{
-		return Sprig::factory('shindig_post_search')->load_page_menu();
+		return Sprig::factory('shindig_post')->load_page_menu();
 	}
 	
 }
