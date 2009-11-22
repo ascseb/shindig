@@ -13,7 +13,7 @@
 </dl>
 
 <dl>
- <dt><?php echo $post->label('slug') ?></dt>
+ <dt><?php echo $post->label('slug') ?> : <?php echo $site_url ?><span id="slug_example"></span></dt>
  <dd><?php echo $post->input('slug') ?></dd>
 </dl>
 <div class="clear"></div>  

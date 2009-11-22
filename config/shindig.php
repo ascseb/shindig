@@ -3,6 +3,7 @@
 return array(
 	'use_authors' => TRUE, 
 	'use_authentication' => TRUE,
+	'admin_posts_per_page' => 4,
 	'categories' => array(
 		'uncategoriezed' => 'Uncategorized',
 		'news' => 'News',

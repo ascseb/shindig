@@ -5,7 +5,7 @@ class Controller_Blog extends Controller_Shindig_Public
 	
 	public function before()
 	{
-		if( $this->request->param('slug') )
+		if( $this->request->param('slug') AND $this->request->action != 'page' )
 		{
 			$this->request->action = 'post';
 		}
@@ -24,6 +24,16 @@ class Controller_Blog extends Controller_Shindig_Public
 		$this->template->content = Request::factory(
 			Route::get('shindig/blog')->uri(array(
 				'action' => 'post',
+				'slug' => $this->request->param('slug'),
+			))
+		)->execute()->response;
+	}
+	
+	public function action_page()
+	{
+		$this->template->content = Request::factory(
+			Route::get('shindig/blog')->uri(array(
+				'action' => 'page',
 				'slug' => $this->request->param('slug'),
 			))
 		)->execute()->response;

@@ -10,8 +10,8 @@ class Controller_Shindig_Blog extends Controller
 			->bind('posts', $posts);
 			
 		$search = Sprig::factory('shindig_post_search');
-		$posts = $search->load(NULL, FALSE);	
-		$pagination = $search->render_pagination();
+		$posts = $search->load_blog_posts(NULL, FALSE);	
+		$pagination = $search->pagination;
 	}
 	
 	public function action_post()
@@ -22,12 +22,45 @@ class Controller_Shindig_Blog extends Controller
 		$slug = $this->request->param('slug');
 			
 		$post = Sprig::factory('shindig_post')
-			->values(array('slug'=>$slug))
+			->values(array(
+				'slug'=>$slug,
+				'type'=>'post',
+				'status'=>'publish',
+			))
 			->load();
 			
 		if( ! $post->loaded() )
 		{
 			throw new Shindig_Exception(__('Post ":post" Not Found'), array(':post'=>$slug), 404);
 		}
+	}
+	
+	public function action_page()
+	{
+		$this->request->response = View::factory('shindig/page')
+			->bind('page', $page);
+			
+		$slug = $this->request->param('slug');
+			
+		$page = Sprig::factory('shindig_post')
+			->values(array(
+				'slug'=>$slug,
+				'type'=>'page',
+				'status'=>'publish',
+			))
+			->load();
+			
+		if( ! $page->loaded() )
+		{
+			throw new Shindig_Exception(__('Page ":page" Not Found'), array(':page'=>$slug), 404);
+		}
+	}
+	
+	public function action_menu()
+	{
+		$this->request->response = View::factory('shindig/menu')
+				->bind('menu', $menu);
+				
+		$menu = Sprig::factory('shindig_post_search')->load_page_menu();		
 	}
 }

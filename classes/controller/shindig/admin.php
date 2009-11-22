@@ -113,14 +113,19 @@ class Controller_Shindig_Admin extends Controller_Template
 		if ($this->auto_render)
 		{
 			$this->template->styles = array(
-				'shindig/media/shindig/css/screen.css' => 'screen',
-				'shindig/media/shindig/css/style.css'  => 'screen',
+				'shindig/media/css/screen.css' => 'screen',
+				'shindig/media/css/style.css'  => 'screen',
 			);
 
 			$this->template->scripts = array(
 				'shindig/media/tinymce/tiny_mce.js',
 				'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js',
 			);
+			
+			if( $this->request->action == 'create' OR $this->request->action == 'update' )
+			{
+				array_push($this->template->scripts, 'shindig/media/js/post_edit.js');
+			}
 
 			if ($this->user)
 			{

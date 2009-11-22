@@ -28,9 +28,28 @@ Route::set('shindig/media', 'shindig/media(/<file>)', array('file'=>'.*?'))
 		'action'	=> 'get', 		
 	));	
 
+Route::set('page/menu', 'page/menu')
+	->defaults(array(
+		'directory' => 'shindig',
+		'controller' => 'blog',
+		'action'     => 'menu',
+	));
+	
 Route::set('public/blog', 'blog(/<slug>)')
 	->defaults(array(
 		'controller' => 'blog',
 		'action'     => 'posts',
+	));
+
+Route::set('public/page', 'page/<slug>')
+	->defaults(array(
+		'controller' => 'blog',
+		'action'     => 'page',
+	));
+	
+Route::set('shindig/ajax', 'shindig/ajax/<action>(/<id>)')
+	->defaults(array(
+		'directory' => 'shindig',
+		'controller' => 'ajax',
 	));
 	

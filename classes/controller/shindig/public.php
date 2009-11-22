@@ -33,20 +33,20 @@ class Controller_Shindig_Public extends Controller_Template
 		if ($this->auto_render)
 		{
 			$this->template->styles = array(
-				'shindig/media/shindig/css/screen.css' => 'screen',
-				'shindig/media/shindig/css/style.css'  => 'screen',
+				'shindig/media/css/screen.css' => 'screen',
+				'shindig/media/css/style.css'  => 'screen',
 			);
 
 			$this->template->scripts = array(
 				'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js',
 			);
 
-			/**
-			 * TODO : Show a page menu
-			 */ 
-			$this->template->menu = array(
+			$this->template->menu = array_merge(array(
 				'' => __('Blog'),
-			);
+			), Shindig::page_menu() );
+
+			
+			
 			$this->template->menu_b = array(
 				Route::get('shindig/admin')->uri() => __('Admin'),
 			);

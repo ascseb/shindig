@@ -9,6 +9,12 @@ class Controller_Shindig_Post extends Controller
 		{
 			throw new Shindig_Exception(__('Unauthorized Access'));	
 		}
+		
+		if( ! shindig::$authors AND Kohana::config('shindig.use_authors') )
+		{
+			shindig::load_authors();
+		}
+		
 		parent::before();
 	}
 	
@@ -19,13 +25,12 @@ class Controller_Shindig_Post extends Controller
 	public function action_list()
 	{
 		$this->request->response = View::factory('shindig/admin/list_posts')
+			->bind('pagination', $pagination)
 			->bind('posts', $posts);
-
-		/**
-		 * TODO : Change this to use model lease_search
-		 */	
 			
-		$posts = Sprig::factory('shindig_post')->load(NULL, FALSE);
+		$search = Sprig::factory('shindig_post_search');
+		$posts = $search->load_all_posts(NULL, FALSE);	
+		$pagination = $search->pagination;
 	}
 	
 	/**
@@ -36,18 +41,15 @@ class Controller_Shindig_Post extends Controller
 	{
 		$this->request->response = View::factory('shindig/admin/edit_post')
 			->set('form_title', __('Create New Post'))
-			->bind('use_authors', $use_authors)
+			->set('use_authors', Kohana::config('shindig.use_authors'))
+			->bind('site_url', $site_url)
 			->bind('errors', $errors)
 			->bind('post', $post);
 
-		$use_authors = Kohana::config('shindig.use_authors');
+		$site_url = URL::site('blog', TRUE).'/';
+
 		$post = Sprig::factory('shindig_post');
 
-		if( ! shindig::$authors AND $use_authors )
-		{
-			shindig::load_authors();
-		}
-		
 		if( isset($_POST['shindig_post']) )
 		{						
 			try 
@@ -87,10 +89,12 @@ class Controller_Shindig_Post extends Controller
 		$this->request->response = View::factory('shindig/admin/edit_post')
 			->set('form_title', __('Update Post'))
 			->bind('use_authors', $use_authors)
+			->bind('site_url', $site_url)
 			->bind('errors', $errors)
 			->bind('post', $post);
 		
 		$use_authors = Kohana::config('shindig.use_authors');
+		$site_url = URL::site('blog', TRUE).'/';
 			
 		$post = Sprig::factory('shindig_post')
 					->values(array('id'=>$this->request->param('id')))
