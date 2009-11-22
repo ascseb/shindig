@@ -62,3 +62,5 @@
 </div>
 
 <?php echo form::close() ?>
+
+<?php echo form::hidden('site_url', URL::site(NULL, TRUE), array('id'=>'site_url')) ?>
