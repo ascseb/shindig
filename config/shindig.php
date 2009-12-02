@@ -10,10 +10,6 @@ return array(
 		'articles' => 'Articles',
 	),
 	'post' => array(
-		'status' => array(
-			'draft' => 'Draft',
-			'publish' => 'Publish',
-		),
 		'type' => array(
 			'post' => 'Post',
 			'page' => 'Page',
