@@ -5,7 +5,7 @@ return array(
 	'use_authentication' => TRUE,
 	'admin_posts_per_page' => 4,
 	'categories' => array(
-		'uncategoriezed' => 'Uncategorized',
+		'uncategorized' => 'Uncategorized',
 		'news' => 'News',
 		'articles' => 'Articles',
 	),
