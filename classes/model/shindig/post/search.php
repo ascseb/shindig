@@ -1,19 +1,19 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Model_Shindig_Post_Search extends Sprig
-{
+class Model_Shindig_Post_Search extends Sprig {
+
 	public $pagination;
-	
+
 	public function load(Database_Query_Builder_Select $query = NULL, $limit = NULL)
 	{
 		if ( ! $query)
 		{
 			$query = DB::select()->order_by('id', 'DESC')->order_by('created_on', 'DESC');
 		}
-  		  		
+
 		return Sprig::factory('Shindig_Post')->load($query, $limit);
 	}
-	
+
 	public function load_blog_posts()
 	{
 		$query = DB::select()->where('status','=','publish')
@@ -32,10 +32,10 @@ class Model_Shindig_Post_Search extends Sprig
   			'items_per_page' => $limit,
   		));
   		$query->offset($this->pagination->offset);
-  		  		
+
 		return $this->load($query, $limit);
 	}
-	
+
 	public function load_all_posts()
 	{
 		$query = DB::select()->order_by('id', 'DESC')
@@ -50,10 +50,10 @@ class Model_Shindig_Post_Search extends Sprig
   			'items_per_page' => $limit,
   		));
   		$query->offset($this->pagination->offset);
-  		  		
+
 		return $this->load($query, $limit);
 	}
-	
+
 	protected function _init()
 	{
 		$this->_fields += array(
@@ -72,8 +72,8 @@ class Model_Shindig_Post_Search extends Sprig
 				'in_db' => FALSE,
 			)),
 		);
-		
+
 		$this->pagination = Pagination::factory();
 	}
-	
-}
+
+} // End Model_Shindig_Post_Search

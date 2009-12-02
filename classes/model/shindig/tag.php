@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Model_Shindig_Tag extends Sprig
-{
+class Model_Shindig_Tag extends Sprig {
+
 	protected $_title_key = 'tag';
 	protected $_table = 'tags';
 	
@@ -23,4 +23,5 @@ class Model_Shindig_Tag extends Sprig
 			)),
 		);
 	}
-}
+
+} // End Model_Shindig_Tag

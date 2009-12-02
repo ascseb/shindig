@@ -1,10 +1,10 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Model_Shindig_Post extends Sprig
-{
-	protected $_title_key = 'slug';
+class Model_Shindig_Post extends Sprig {
+
+	protected $_title_key = 'title';
 	protected $_table = 'posts';
-	
+
 	public function __get($field)
 	{
 		if ($field === 'post_excerpt')
@@ -20,27 +20,27 @@ class Model_Shindig_Post extends Sprig
 		}
 
 		return parent::__get($field);
-	}	
-	
+	}
+
 	public function load_page_menu()
 	{
 		$query = DB::select()->order_by('id', 'DESC')
 			->order_by('created_on', 'DESC')
 			->where('type','=','page')
 			->and_where('status','=','publish');
-			
+
 		$pages = $this->load($query, FALSE);
-		
+
 		$menu = array();
-		
+
 		foreach($pages as $i=>$page)
 		{
 			$menu[URL::site('page/'.$page->slug, TRUE)] = $page->title;
 		}
-		
+
 		return $menu;
 	}
-	
+
 	protected function _init()
 	{
 		$this->_fields += array(
@@ -52,7 +52,7 @@ class Model_Shindig_Post extends Sprig
 				'label' => __('Slug'),
 				'unique' => TRUE,
 				'rules' => array(
-					'regex' => array('/^[a-zA-Z_-]+$/D'),  
+					'regex' => array('/^[a-zA-Z_-]+$/D'),
 				),
 			)),
 			'status' => new Sprig_Field_Enum(array(
@@ -101,5 +101,5 @@ class Model_Shindig_Post extends Sprig
 			)),
 		);
 	}
-		
-}
+
+} // End Model_Shindig_Post
